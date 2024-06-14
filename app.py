@@ -1,7 +1,7 @@
 import streamlit as st
 from openai import OpenAI
 
-st.header("Chat Bot")
+st.header("챗봇")
 user_api_key = st.text_input("OpenAI API키를 입력해주세요.") # api키 입력부
 if "user_api_key" not in st.session_state: # api키를 session_state로 저장
     st.session_state["user_api_key"] = user_api_key
@@ -17,7 +17,7 @@ if st.button('Assistant 새롭게 생성하기'):
         st.session_state.assistant = assistant
     messages = []
     st.session_state.messages = messages # 대화 내역을 session_state에 저장
-st.header("Thread")
+st.header("대화창")
 prompt = st.chat_input("메시지를 입력하세요.")
 if prompt: 
     st.session_state.messages.append({"role": "user", "content": prompt}) # user의 prompt를 messages로 저장
@@ -44,8 +44,8 @@ if prompt:
     with st.chat_message("assistant"): # assistant의 text 응답 출력
         st.markdown(answer)
     st.session_state.messages.append({"role": "assistant", "content": answer})
-if st.button("Thread 청소"):
+if st.button("대화창 청소"):
     del st.session_state.messages
-if st.button("assistant 지우기"):
+if st.button("대화 내역 지우기"):
     client = st.session_state.client
     response = client.beta.thread.delete(st.session_state.thread_id)
