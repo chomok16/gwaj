@@ -15,7 +15,7 @@ if st.button('Assistant 새롭게 생성하기'):
         st.session_state.client = client
     if 'assistant' not in st.session_state:
         st.session_state.assistant = assistant
-    messages = []
+    messages = {}
     if 'messages' not in st.session_state:
         st.session_state.messages = messages
 st.header("Thread")
