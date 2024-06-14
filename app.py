@@ -34,6 +34,7 @@ if prompt:
             }
         ]
     )
+    st.session_state.thread_id = thread.id
     run = client.beta.threads.runs.create_and_poll(
         thread_id=thread.id,
         assistant_id=assistant.id
@@ -44,7 +45,7 @@ if prompt:
         st.markdown(answer)
     st.session_state.messages.append({"role": "assistant", "content": answer})
 if st.button("Thread 지우기"):
-    del st.session_state['messages']
+    del st.session_state.messages
 if st.button("대화 기록 지우기"):
     client = st.session_state.client
-    response = client.beta.threads.delete(thread.id)
+    response = client.beta.threads.delete(st.session_state.thread_id)
