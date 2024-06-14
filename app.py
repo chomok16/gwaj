@@ -46,4 +46,5 @@ if prompt:
 if st.button("Thread 지우기"):
     del st.session_state['messages']
 if st.button("대화 기록 지우기"):
+    client = st.session_state.client
     response = client.beta.threads.delete(thread.id)
