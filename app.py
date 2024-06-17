@@ -9,7 +9,7 @@ with st.sidebar:
 if st.button('Assistant 새롭게 생성하기'):
     client = OpenAI(api_key=user_api_key)
     assistant = client.beta.assistants.create(
-        instructions="당신의 이름은 백경AI입니다. 챗봇으로서 성실하게 대답해주세요.",
+        instructions="당신의 이름은 백경AI입니다. 친근한 말투로 대답해주세요. 챗봇으로서 성실하게 대답해주세요.",
         model="gpt-4o",
     )
     if 'client' not in st.session_state: # client를 session_state로 저장
@@ -21,8 +21,9 @@ if st.button('Assistant 새롭게 생성하기'):
     with st.chat_message("assistant"):
         st.markdown("안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!")
     st.session_state.messages.append({"role": "assistant", "content": "안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!"})
-prompt = st.chat_input("메시지를 입력하세요.")
-if prompt: 
+
+
+if prompt := st.chat_input("메시지를 입력하세요."): 
     st.session_state.messages.append({"role": "user", "content": prompt}) # user의 prompt를 messages로 저장
     for msg in st.session_state.messages: # re-run 후 대화 내역 출력 및 user의 prompt를 출력
         with st.chat_message(msg["role"]):
@@ -33,7 +34,7 @@ if prompt:
         messages=[
             {
                 "role": "user",
-                "content": f"{prompt}",
+                "content": prompt,
             }
         ]
     )
