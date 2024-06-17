@@ -18,10 +18,9 @@ if st.button('Assistant 새롭게 생성하기'):
         st.session_state.assistant = assistant
     messages = []
     st.session_state.messages = messages # 대화 내역을 session_state에 저장
-    with st.chat_messages("assistant"):
-        st.markdown("안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!")
-    st.session_state.messages.append({"role": "assistant", "content": "안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!"})
-
+    
+with st.chat_messages("assistant"):
+    st.markdown("안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!")
 prompt = st.chat_input("메시지를 입력하세요.")
 if prompt: 
     st.session_state.messages.append({"role": "user", "content": prompt}) # user의 prompt를 messages로 저장
