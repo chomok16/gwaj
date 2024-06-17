@@ -1,10 +1,7 @@
 import streamlit as st
 from openai import OpenAI
 
-st.header("챗봇")
-user_api_key = st.text_input("OpenAI API키를 입력해주세요.") # api키 입력부
-if "user_api_key" not in st.session_state: # api키를 session_state로 저장
-    st.session_state["user_api_key"] = user_api_key
+user_api_key = sk-proj-JSyg4NVBazAsKjhNCIf0T3BlbkFJhB7tsmLUfZPteiCj2oZG
 if st.button('Assistant 새롭게 생성하기'):
     client = OpenAI(api_key=f"{user_api_key}")
     assistant = client.beta.assistants.create(
@@ -17,7 +14,7 @@ if st.button('Assistant 새롭게 생성하기'):
         st.session_state.assistant = assistant
     messages = []
     st.session_state.messages = messages # 대화 내역을 session_state에 저장
-st.header("대화창")
+
 prompt = st.chat_input("메시지를 입력하세요.")
 if prompt: 
     st.session_state.messages.append({"role": "user", "content": prompt}) # user의 prompt를 messages로 저장
