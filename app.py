@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 
 if st.button('Assistant 새롭게 생성하기'):
-    user_api_key = "sk-proj-JSyg4NVBazAsKjhNCIf0T3BlbkFJhB7tsmLUfZPteiCj2oZG"
+    user_api_key = "sk-proj-xMbHD5jhljAlgWbT5RqcT3BlbkFJTxPF4CkLyJrh0OEVrht5"
     client = OpenAI(api_key=user_api_key)
     assistant = client.beta.assistants.create(
         instructions="당신의 이름은 백경AI입니다. 챗봇으로서 성실하게 대답해주세요.",
@@ -31,7 +31,7 @@ if prompt:
             }
         ]
     )
-    st.session_state.thread_id = thread.id 
+    st.session_state.thread_id = thread.id
     run = client.beta.threads.runs.create_and_poll(
         thread_id=thread.id,
         assistant_id=assistant.id
@@ -41,10 +41,9 @@ if prompt:
     with st.chat_message("assistant"): # assistant의 text 응답 출력
         st.markdown(answer)
     st.session_state.messages.append({"role": "assistant", "content": answer})
-if st.button("대화창 청소"):
-    del st.session_state.messages
 if st.button("대화 내역 지우기"):
     if 'thread_id' in st.session_state:
         client = st.session_state.client
         response = client.beta.thread.delete(st.session_state.thread_id)
+        del st.session_state.messages
         st.rerun()
