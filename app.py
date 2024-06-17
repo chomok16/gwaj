@@ -1,9 +1,9 @@
 import streamlit as st
 from openai import OpenAI
 
-user_api_key = sk-proj-JSyg4NVBazAsKjhNCIf0T3BlbkFJhB7tsmLUfZPteiCj2oZG
+user_api_key = "sk-proj-JSyg4NVBazAsKjhNCIf0T3BlbkFJhB7tsmLUfZPteiCj2oZG"
 if st.button('Assistant 새롭게 생성하기'):
-    client = OpenAI(api_key=f"{user_api_key}")
+    client = OpenAI(api_key=user_api_key)
     assistant = client.beta.assistants.create(
         instructions="당신은 챗봇입니다. 성실하게 대답해주세요.",
         model="gpt-4o",
