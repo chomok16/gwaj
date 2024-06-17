@@ -14,6 +14,8 @@ if st.button('Assistant 새롭게 생성하기'):
         st.session_state.assistant = assistant
     messages = []
     st.session_state.messages = messages # 대화 내역을 session_state에 저장
+    with st.chat_messages("assistant"):
+        st.markdown("안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!")
 
 prompt = st.chat_input("메시지를 입력하세요.")
 if prompt: 
@@ -47,3 +49,10 @@ if st.button("대화 내역 지우기"):
         response = client.beta.thread.delete(st.session_state.thread_id)
         del st.session_state.messages
         st.rerun()
+
+ssgdgdht
+sbtnthd
+fdbdfbn
+
+
+
