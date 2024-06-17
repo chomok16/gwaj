@@ -49,7 +49,7 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         st.markdown(answer)
     st.session_state.messages.append({"role": "assistant", "content": answer})
 if st.button("대화 내역 지우기"):
-    if 'thread_id' in st.session_state:
+    if st.session_state.thread_id in st.session_state:
         client = st.session_state.client
         response = client.beta.thread.delete(st.session_state.thread_id)
         del st.session_state.messages
