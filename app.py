@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 
 if st.button('Assistant 새롭게 생성하기'):
-    user_api_key = ""
+    user_api_key = "sk-proj-PziPeNcQ4iCWLpZy5XXOT3BlbkFJApIK9bx11t6i2EmUh1jr"
     client = OpenAI(api_key=user_api_key)
     assistant = client.beta.assistants.create(
         instructions="당신의 이름은 백경AI입니다. 챗봇으로서 성실하게 대답해주세요.",
