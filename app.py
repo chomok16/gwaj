@@ -27,8 +27,8 @@ if prompt:
     for msg in st.session_state.messages: # re-run 후 대화 내역 출력 및 user의 prompt를 출력
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
-    client = st.session_state['client'] # session_state에 저장된 client id를 불러오기
-    assistant = st.session_state['assistant']
+    client = st.session_state.client # session_state에 저장된 client id를 불러오기
+    assistant = st.session_state.assistant
     thread = client.beta.threads.create(
         messages=[
             {
