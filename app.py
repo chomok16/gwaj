@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 
 if st.button('Assistant 새롭게 생성하기'):
-    user_api_key = "sk-proj-xMbHD5jhljAlgWbT5RqcT3BlbkFJTxPF4CkLyJrh0OEVrht5"
+    user_api_key = ""
     client = OpenAI(api_key=user_api_key)
     assistant = client.beta.assistants.create(
         instructions="당신의 이름은 백경AI입니다. 챗봇으로서 성실하게 대답해주세요.",
@@ -16,6 +16,7 @@ if st.button('Assistant 새롭게 생성하기'):
     st.session_state.messages = messages # 대화 내역을 session_state에 저장
     with st.chat_messages("assistant"):
         st.markdown("안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!")
+    st.session_state.messages.append({"role": "assistant", "content": "안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!"})
 
 prompt = st.chat_input("메시지를 입력하세요.")
 if prompt: 
