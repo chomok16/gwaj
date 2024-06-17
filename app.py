@@ -44,5 +44,6 @@ if prompt:
 if st.button("대화창 청소"):
     del st.session_state.messages
 if st.button("대화 내역 지우기"):
-    client = st.session_state.client
-    response = client.beta.thread.delete(st.session_state.thread_id)
+    if 'thread_id' in st.session_state:
+        client = st.session_state.client
+        response = client.beta.thread.delete(st.session_state.thread_id)
