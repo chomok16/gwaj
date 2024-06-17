@@ -49,10 +49,3 @@ if st.button("대화 내역 지우기"):
         response = client.beta.thread.delete(st.session_state.thread_id)
         del st.session_state.messages
         st.rerun()
-
-ssgdgdht
-sbtnthd
-fdbdfbn
-
-
-
