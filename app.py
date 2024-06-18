@@ -7,8 +7,7 @@ def app():
     
     # Load image from file
     img = Image.open("백경.jpg")
-    new_size = (150, 150)
-    img = img.resize(new_size)
+    img = img.resize((901,832))
     st.image(img)
     
     history = []
