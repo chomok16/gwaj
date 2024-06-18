@@ -12,8 +12,8 @@ def app():
     st.image(img)
     
     history = []
-    st.title("Hi I'm Weebsu! How can I help?")
-    st.subheader("Weebsu is a chatGPT-enabled Chatbot")
+    st.title("우리 학교의 영원한 친구 백경이")
+    st.subheader("백경이는 부경대의 모든 건물들을 다 알아! 학식당 메뉴도 알고 있지 뭐든지 물어봐!")
 app()
 
 with st.sidebar:
