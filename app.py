@@ -6,7 +6,7 @@ def app():
     st.set_page_config(layout="wide")
     
     # Load image from file
-    img = Image.open("백경이.jpg")
+    img = Image.open("백경이.png")
     img = img.resize((513,689))
     st.image(img)
     
