@@ -22,14 +22,13 @@ with st.sidebar:
     
 if st.button('Assistant 새롭게 생성하기'):
     client = OpenAI(api_key=user_api_key)
-    vector_store=client.beta.vector_stores.create(name="TotalFile")
+    vector_store=client.beta.vector_stores.create_and_poll(name="TotalFile")
     file_paths = ["메뉴와가격.pdf"]
     file_streams = [open(path, "rb") for path in file_paths]
     file_batch = client.beta.vector_stores.file_batches.upload_and_poll(
         vector_store_id = vector_store.id,
         files = file_streams
     )
-
     assistant = client.beta.assistants.create(
         instructions="당신의 이름은 백경AI입니다. 친근한 말투로 대답해주세요. 챗봇으로서 성실하게 대답해주세요.",
         model="gpt-4o",
