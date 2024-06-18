@@ -23,7 +23,7 @@ with st.sidebar:
 if st.button('Assistant 새롭게 생성하기'):
     client = OpenAI(api_key=user_api_key)
     vector_store=client.beta.vector_stores.create(name="TotalFile")
-    file_paths = ["gwaj/메뉴와가격.xlsx"]
+    file_paths = ["메뉴와가격.xlsx"]
     file_streams = [open(path, "rb") for path in file_paths]
     file_batch = client.beta.vector_stores.file_batches.upload_and_poll(
         vector_store_id = vector_store.id,
