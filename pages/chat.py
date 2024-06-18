@@ -1,7 +1,7 @@
 from openai import OpenAI
 import streamlit as st
 
-userkey = st.text_input()
+userkey = st.text_input("hi")
 
 client = OpenAI(api_key=userkey)
 #assistant = client.beta.assistants.create(
