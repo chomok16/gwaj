@@ -6,8 +6,8 @@ def app():
     st.set_page_config(layout="wide")
     
     # Load image from file
-    img = Image.open("백경.jpg")
-    img = img.resize((901,832))
+    img = Image.open("백경이.jpg")
+    img = img.resize((513,689))
     st.image(img)
     
     history = []
