@@ -1,8 +1,6 @@
 import streamlit as st
 from openai import OpenAI
 
-st.image(백경이.png)
-
 with st.sidebar:
     user_api_key = st.text_input("OpenAI API키를 입력해주세요.", key = "openai_api_key", type="password")
     if 'key' not in st.session_state:
