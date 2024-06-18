@@ -33,7 +33,7 @@ if st.button('Assistant 새롭게 생성하기'):
         instructions="당신의 이름은 백경AI입니다. 친근한 말투로 대답해주세요. 챗봇으로서 성실하게 대답해주세요.",
         model="gpt-4o",
         tools=[{"type": "file_search"}],
-        tools_resources={"file_search":{[vector_store.id]}}
+        tool_resources={"file_search":{[vector_store.id]}},
     )
     if 'client' not in st.session_state: # client를 session_state로 저장
         st.session_state.client = client
