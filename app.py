@@ -1,5 +1,6 @@
 import streamlit as st
 from openai import OpenAI
+from PIL import Image
 
 def app():
     st.set_page_config(layout="wide")
