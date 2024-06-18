@@ -1,6 +1,19 @@
 import streamlit as st
 from openai import OpenAI
 
+def app():
+    st.set_page_config(layout="wide")
+    
+    # Load image from file
+    img = Image.open("백경이.png")
+    new_size = (150, 150)
+    img = img.resize(new_size)
+    st.image(img)
+    
+    history = []
+    st.title("Hi I'm Weebsu! How can I help?")
+    st.subheader("Weebsu is a chatGPT-enabled Chatbot")
+
 with st.sidebar:
     user_api_key = st.text_input("OpenAI API키를 입력해주세요.", key = "openai_api_key", type="password")
     if 'key' not in st.session_state:
