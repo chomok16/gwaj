@@ -48,7 +48,9 @@ if st.button('Assistant 새롭게 생성하기'):
         st.session_state.messages.append({"role": "assistant", "content": "안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!"})
 
 
-if prompt := st.chat_input("메시지를 입력하세요."): 
+if prompt := st.chat_input("메시지를 입력하세요."):
+    if st.session_state.client not in st.session_state:
+        break
     st.session_state.messages.append({"role": "user", "content": prompt}) # user의 prompt를 messages로 저장
     for msg in st.session_state.messages: # re-run 후 대화 내역 출력 및 user의 prompt를 출력
         message(msg)
@@ -72,8 +74,9 @@ if prompt := st.chat_input("메시지를 입력하세요."):
     message(answer)
     st.session_state.messages.append({"role": "assistant", "content": answer})
 if st.button("대화 내역 지우기"):
-    if st.session_state.thread_id in st.session_state:
-        client = st.session_state.client
-        response = client.beta.thread.delete(st.session_state.thread_id)
-        del st.session_state.messages
-        st.rerun()
+    if st.session_state.thread_id not in st.session_state:
+        break
+    client = st.session_state.client
+    response = client.beta.thread.delete(st.session_state.thread_id)
+    del st.session_state.messages
+    st.rerun()
