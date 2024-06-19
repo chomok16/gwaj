@@ -119,18 +119,21 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         {"name": "양어장 관리사", "code": "E29", "code_alt": "e29", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%96%91%EC%96%B4%EC%9E%A5%EA%B4%80%EB%A6%AC%EC%82%AC.png?raw=true", "width": "497", "height": "291"}
         ]
         for bldg_data_component in bldg_data:
-            if bldg_data["name"] in prompt:
-                img_path=bldg
+            compared_phrase1 = bldg_data["name"]
+            if compared_phrase1 in prompt:
+                img_path=bldg_data["img_url"]
                 img_data=f'<img width={bldg_data["width"]} height={bldg_data["height"]} src="{img_path}"/>'
                 message(img_data, avatar_style = 'no-avatar', allow_html = True)
                 st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
-            elif bldg_data["name"] not in prompt:
-                if bldg_data["code"] in prompt:
+            elif compared_phrase1 not in prompt:
+                compared_phrase2 = bldg_data["code"]
+                if compared_phrase2 in prompt:
                     img_path=bldg_data["img_url"]
                     img_data=f'<img width={bldg_data["width"]} height={bldg_data["height"]} src="{img_path}"/>'
                     message(img_data, avatar_style = 'no-avatar', allow_html = True)
                     st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
-                if bldg_data["code_alt"] in prompt:
+                compared_phrase3 = bldg_data["code_alt"]
+                if compared_phrase3 in prompt:
                     img_path=bldg_data["img_url"]
                     img_data=f'<img width={bldg_data["width"]} height={bldg_data["height"]} src="{img_path}"/>'
                     message(img_data, avatar_style = 'no-avatar', allow_html = True)
