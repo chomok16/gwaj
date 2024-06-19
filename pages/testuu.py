@@ -5,13 +5,9 @@ from streamlit_chat import message
 
 def app():
     st.set_page_config(layout="wide")
-    
-    # Load image from file
     img = Image.open("백경이.png")
     img = img.resize((171,230))
     st.image(img)
-    
-    history = []
     st.title("우리 학교의 영원한 친구 백경이")
     st.subheader("백경이는 부경대의 모든 건물들을 다 알아! 학식당 메뉴도 알고 있지, 뭐든지 물어봐!")
 app()
