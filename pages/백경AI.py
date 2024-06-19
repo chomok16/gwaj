@@ -87,6 +87,7 @@ if prompt := st.chat_input("메시지를 입력하세요."):
                 f'<img width="100%" height="200" src="{img_path}"/>',
                 allow_html = True,
             )
+            st.session_state.messages.append({"content": answer, "role": False})
 if st.button("대화 내역 지우기"):
     if st.session_state.thread_id:
         if st.session_state.client:
@@ -102,6 +103,8 @@ if st.button("대화 내역 지우기"):
 #            message(
 #                f'<img width="100%" height="200" src="{img_path}"/>',
 #                allow_html = True,
+#            )
+#            st.session_state.messages.append({"content": answer, "role": False})
 
 # image_path가 이미지의 웹 주소입니다.
 #"건물 이름입니다."에서 따옴표 안에 건물 이름 넣어주세요. 건물 번호도 같이 만들어주세요. 노가다입니다.
