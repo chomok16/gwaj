@@ -81,8 +81,7 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         answer = thread_messages.data[0].content[0].text.value # assistant의 응답에서 text를 추출
         message(answer, avatar_style="no-avatar")
         st.session_state.messages.append({"content": answer, "is_user": False, "html": False})
-        bldg_data = [ # 건물 정보와 이미지 주소 정리 {"name": "건물 이름", "code": "건물 번호", "code_alt": "건물 번호(소문자)", "img_url": "이미지 주소", "width": "", "height": ""},
-        {"name": "대학본부", "code": "A11", "code_alt": "a11", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%8C%80%ED%95%99%EB%B3%B8%EB%B6%80.png?raw=true", "width": "599", "height": "288"},
+        bldg_data = [{"name": "대학본부", "code": "A11", "code_alt": "a11", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%8C%80%ED%95%99%EB%B3%B8%EB%B6%80.png?raw=true", "width": "599", "height": "288"},
         {"name": "웅비관", "code": "A12", "code_alt": "a12", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%9B%85%EB%B9%84%EA%B4%80.png?raw=true", "width": "654", "height": "400"},
         {"name": "누리관", "code": "A13", "code_alt": "a13", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%88%84%EB%A6%AC%EA%B4%80.png?raw=true", "width": "561", "height": "411"},
         {"name": "향파관", "code": "A15", "code_alt": "a15", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%ED%96%A5%ED%8C%8C%EA%B4%80.png?raw=true", "width": "734", "height": "605"},
