@@ -18,7 +18,7 @@ with st.sidebar:
             st.session_state.key = user_api_key
     
 if st.button('Assistant 새롭게 생성하기'):
-    if st.session_state.key in st.session_state:
+    if st.session_state.key:
         client = OpenAI(api_key=user_api_key)
         vector_store=client.beta.vector_stores.create(name="TotalFile")
         file_paths = ["메뉴와가격.pdf"]
