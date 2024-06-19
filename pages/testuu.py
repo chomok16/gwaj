@@ -43,14 +43,14 @@ if st.button('Assistant 새롭게 생성하기'):
             st.session_state.assistant = assistant
         messages = []
         st.session_state.messages = messages # 대화 내역을 session_state에 저장
-        message("안녕, 부경대 친구들, 학교생활을 도와주는 '백경이봇'이야!", is_user=False, AvatarStyle='no-avatar')
+        message("안녕, 부경대 친구들, 학교생활을 도와주는 '백경이봇'이야!", is_user=False, avata_style='no-avatar')
         st.session_state.messages.append({"content": "안녕, 부경대 친구들! 학교생활을 도와주는 '백경이봇'이야.", "role": False})
 
 if prompt := st.chat_input("메시지를 입력하세요."):
     if st.session_state.client:
         st.session_state.messages.append({"content": prompt, "role": True}) # user의 prompt를 messages로 저장
         for msg in st.session_state.messages: # re-run 후 대화 내역 출력 및 user의 prompt를 출력
-            message(msg["content"], is_user=msg["role"], AvatarStyle="no-avatar")
+            message(msg["content"], is_user=msg["role"], avatar_style="no-avatar")
         client = st.session_state.client # session_state에 저장된 client id를 불러오기
         assistant = st.session_state.assistant
         thread = client.beta.threads.create(
@@ -68,7 +68,7 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         )
         thread_messages = client.beta.threads.messages.list(thread.id, run_id=run.id)
         answer = thread_messages.data[0].content[0].text.value # assistant의 응답에서 text를 추출
-        message(answer, AvatarStyle="no-avatar")
+        message(answer, avatar_style="no-avatar")
         st.session_state.messages.append({"content": answer, "role": False})
 if st.button("대화 내역 지우기"):
     if st.session_state.thread_id:
