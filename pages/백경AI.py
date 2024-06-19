@@ -55,13 +55,13 @@ if st.button('대화 새로 시작하기'):
         messages = []
         st.session_state.messages = messages # 대화 내역을 session_state에 저장
         message("안녕, 부경대 친구들, 학교생활을 도와주는 '백경이봇'이야!", is_user=False, avatar_style='no-avatar')
-        st.session_state.messages.append({"content": "안녕, 부경대 친구들! 학교생활을 도와주는 '백경이봇'이야.", "role": False})
+        st.session_state.messages.append({"content": "안녕, 부경대 친구들! 학교생활을 도와주는 '백경이봇'이야.", "is_user": False, "html": False})
 
 if prompt := st.chat_input("메시지를 입력하세요."):
     if st.session_state.client:
         st.session_state.messages.append({"content": prompt, "role": True}) # user의 prompt를 messages로 저장
         for msg in st.session_state.messages: # re-run 후 대화 내역 출력 및 user의 prompt를 출력
-            message(msg["content"], is_user=msg["role"], avatar_style="no-avatar")
+            message(msg["content"], is_user=msg["is_user"], avatar_style="no-avatar", allow_html=msg["html"])
         client = st.session_state.client # session_state에 저장된 client id를 불러오기
         assistant = st.session_state.assistant
         thread = client.beta.threads.create(
@@ -80,14 +80,12 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         thread_messages = client.beta.threads.messages.list(thread.id, run_id=run.id)
         answer = thread_messages.data[0].content[0].text.value # assistant의 응답에서 text를 추출
         message(answer, avatar_style="no-avatar")
-        st.session_state.messages.append({"content": answer, "role": False})
+        st.session_state.messages.append({"content": answer, "is_user": False, "html": False})
         if "대학본부" in prompt:
             img_path="https://github.com/chomok16/gwaj/blob/main/%EB%8C%80%ED%95%99%EB%B3%B8%EB%B6%80.png?raw=true"
-            message(
-                f'<img width="100%" height="200" src="{img_path}"/>',
-                allow_html = True,
-            )
-            st.session_state.messages.append({"content": answer, "role": False})
+            img_data=f'<img width="100%" height="200" src="{img_path}"/>'
+            message(img_data, avatar_style = 'no-avatar', allow_html = True)
+            st.session_state.messages.append({"content": image_data, "is_user": False, "html": True})
 if st.button("대화 내역 지우기"):
     if st.session_state.thread_id:
         if st.session_state.client:
@@ -96,18 +94,6 @@ if st.button("대화 내역 지우기"):
             del st.session_state.messages
             st.rerun()
 
-
-
-#        if "건물 이릅입니다." in prompt:
-#            img_path="https://어쩌구저쩌구 웹주소"
-#            message(
-#                f'<img width="100%" height="200" src="{img_path}"/>',
-#                allow_html = True,
-#            )
-#            st.session_state.messages.append({"content": answer, "role": False})
-
-# image_path가 이미지의 웹 주소입니다.
-#"건물 이름입니다."에서 따옴표 안에 건물 이름 넣어주세요. 건물 번호도 같이 만들어주세요. 노가다입니다.
 
 
 
