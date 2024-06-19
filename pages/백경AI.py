@@ -3,6 +3,7 @@ from openai import OpenAI
 from PIL import Image
 from streamlit_chat import message
 import openai
+from streamlit.components.v1 import html
 
 def app():
     st.set_page_config(layout="wide")
@@ -79,7 +80,11 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         message(answer, avatar_style="no-avatar")
         st.session_state.messages.append({"content": answer, "role": False})
         if "대학본부" in prompt:
-            message("https://mblogthumb-phinf.pstatic.net/MjAyMTA5MThfMzcg/MDAxNjMxOTU0MzU4Nzcy.79pDkNzCopTsbkiEwCjJAdpRvuJNOT9TbDoiznk75T8g.PY364zgPEfj0HxZGwsgLtK0e4zAJvDIdLXfG-tUcT9Ag.JPEG.pknunarae/spring%EF%BC%BF2021%EF%BC%BF09%EF%BC%BF09%EF%BC%BF15%EF%BC%BF11%EF%BC%BF22.jpg?type=w800",avatar_style='no-avatar')
+            img_path="https://www.groundzeroweb.com/wp-content/uploads/2017/05/Funny-Cat-Memes-11.jpg"
+            message(
+                f'<img width="100%" height="200" src="{img_path}"/>',
+                allow_html = True,
+            )
 if st.button("대화 내역 지우기"):
     if st.session_state.thread_id:
         if st.session_state.client:
