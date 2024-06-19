@@ -1,5 +1,5 @@
 openai
 Pillow
-json
+Json
 streamlit
 streamlit-chat
