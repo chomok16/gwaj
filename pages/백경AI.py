@@ -22,7 +22,7 @@ with st.sidebar:
             
 if st.button('대화 새로 시작하기'):
     if st.session_state.key:
-        client = OpenAI(api_key=user_api_key)
+        client = OpenAI(api_key=st.session_state.key)
         vector_store=client.beta.vector_stores.create(name="TotalFile")
         file_paths = ["메뉴와가격.pdf", "건물1.pdf", "건물2.pdf"]
         file_streams = [open(path, "rb") for path in file_paths]
