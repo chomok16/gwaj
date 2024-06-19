@@ -28,7 +28,10 @@ if st.button('Assistant 새롭게 생성하기'):
             files = file_streams
         )
         assistant = client.beta.assistants.create(
-            instructions="당신의 이름은 백경AI입니다. 친근한 말투로 대답해주세요. 챗봇으로서 성실하게 대답해주세요.",
+            instructions="""
+            당신의 이름은 백경AI입니다. 친근한 말투로 대답해주세요. 
+            챗봇으로서 성실하게 대답해주세요. vector_store에 업로드된 파일에 대해서는 언급하지 마세요.
+            """,
             model="gpt-4o",
             tools=[{"type": "file_search"}],
             tool_resources={"file_search":{"vector_store_ids": [vector_store.id]}},
@@ -39,8 +42,7 @@ if st.button('Assistant 새롭게 생성하기'):
             st.session_state.assistant = assistant
         messages = []
         st.session_state.messages = messages # 대화 내역을 session_state에 저장
-        with st.chat_message("assistant"):
-            st.markdown("안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!")
+        message("안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!")
         st.session_state.messages.append({"role": "assistant", "content": "안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!"})
 
 
