@@ -32,8 +32,7 @@ if st.button('대화 새로 시작하기'):
         )
         assistant = client.beta.assistants.create(
             instructions="""
-            당신의 이름은 '백경이봇'입니다. 존댓말이 아닌 반말로 대답해주세요. 대답은 json형식으로 출력해주세요.
-            key는 text, image 입니다.
+            당신의 이름은 '백경이봇'입니다. 존댓말이 아닌 반말로 대답해주세요.
             욕설은 사용하지 말아주세요. 챗봇으로서 성실하게 대답해주세요. 업로드된 파일을 바탕으로 대답해주세요.
             '메뉴와가격.pdf'는 교내 식당 '들락날락'의 메뉴판입니다. 메뉴에 관한 정보를 요청받는다면 '들락날락'의 메뉴임을 알려주세요.
             '건물1.pdf'는 교내 시설의 위치를 적어놓은 파일입니다. 숫자로만 이루어진 정보는 시설의 번호입니다.
@@ -80,7 +79,8 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         answer = thread_messages.data[0].content[0].text.value # assistant의 응답에서 text를 추출
         message(answer, avatar_style="no-avatar")
         st.session_state.messages.append({"content": answer, "role": False})
-        message(thread_messages, avatar_style='no-avatar')
+        if "대학본부" or "대학 본부" or "본부" or "a11" or "A11" in prompt:
+            message("https://mblogthumb-phinf.pstatic.net/MjAyMTA5MThfMzcg/MDAxNjMxOTU0MzU4Nzcy.79pDkNzCopTsbkiEwCjJAdpRvuJNOT9TbDoiznk75T8g.PY364zgPEfj0HxZGwsgLtK0e4zAJvDIdLXfG-tUcT9Ag.JPEG.pknunarae/spring%EF%BC%BF2021%EF%BC%BF09%EF%BC%BF09%EF%BC%BF15%EF%BC%BF11%EF%BC%BF22.jpg?type=w800",avatar_style='no-avatar')
 if st.button("대화 내역 지우기"):
     if st.session_state.thread_id:
         if st.session_state.client:
