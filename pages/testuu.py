@@ -40,7 +40,6 @@ if st.button('대화 새로 시작하기'):
             메시지에 출처에 대한 인용표시와 각주는 출력하지 마세요. 파일을 참고하였다는 사실도 말하지 마세요.
             """,
             model="gpt-4o",
-            response_format={ "type": "json_object" },
             tools=[{"type": "file_search"}],
             tool_resources={"file_search":{"vector_store_ids": [vector_store.id]}},
         )
@@ -71,7 +70,8 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         st.session_state.thread_id = thread.id
         run = client.beta.threads.runs.create_and_poll(
             thread_id=thread.id,
-            assistant_id=assistant.id
+            assistant_id=assistant.id,
+            response_format={ "type": "json_object" }
         )
         thread_messages = client.beta.threads.messages.list(thread.id, run_id=run.id)
         answer = thread_messages.data[0].content[0].text.value # assistant의 응답에서 text를 추출
