@@ -44,7 +44,7 @@ if st.button('대화 새로 시작하기'):
             model="gpt-4o",
             tools=[{"type": "file_search"}],
             tool_resources={"file_search":{"vector_store_ids": [vector_store.id]}},
-            respomse_format = {"type": "json_object"},
+#            respomse_format = {"type": "json_object"},
         )
         if 'client' not in st.session_state: # client를 session_state로 저장
             st.session_state.client = client
