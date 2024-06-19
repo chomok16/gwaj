@@ -24,7 +24,7 @@ if st.button('대화 새로 시작하기'):
     if st.session_state.key:
         client = OpenAI(api_key=user_api_key)
         vector_store=client.beta.vector_stores.create(name="TotalFile")
-        file_paths = ["정리사진.png"]
+        file_paths = ["clearfile.pdf"]
         file_streams = [open(path, "rb") for path in file_paths]
         file_batch = client.beta.vector_stores.file_batches.upload_and_poll(
             vector_store_id = vector_store.id,
