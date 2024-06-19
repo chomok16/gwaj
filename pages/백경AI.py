@@ -30,7 +30,7 @@ if st.button('대화 새로 시작하기'):
             vector_store_id = vector_store.id,
             files = file_streams
         )
-        assistant = client.beta.assistants.create_and_poll(
+        assistant = client.beta.assistants.create(
             instructions="""
             당신의 이름은 '백경이봇'입니다. 존댓말이 아닌 반말로 대답해주세요.
             욕설은 사용하지 말아주세요. 챗봇으로서 성실하게 대답해주세요. 업로드된 파일을 바탕으로 대답해주세요.
