@@ -2,6 +2,7 @@ import streamlit as st
 from openai import OpenAI
 from PIL import Image
 from streamlit_chat import message
+import json
 
 def app():
     st.set_page_config(layout="wide")
