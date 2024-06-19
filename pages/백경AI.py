@@ -92,3 +92,18 @@ if st.button("대화 내역 지우기"):
             response = client.beta.thread.delete(st.session_state.thread_id)
             del st.session_state.messages
             st.rerun()
+
+
+
+#        if "건물 이릅입니다." in prompt:
+#            img_path="https://어쩌구저쩌구 웹주소"
+#            message(
+#                f'<img width="100%" height="200" src="{img_path}"/>',
+#                allow_html = True,
+
+# image_path가 이미지의 웹 주소입니다.
+#"건물 이름입니다."에서 따옴표 안에 건물 이름 넣어주세요. 건물 번호도 같이 만들어주세요. 노가다입니다.
+
+
+
+
