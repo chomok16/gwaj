@@ -80,7 +80,7 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         message(answer, avatar_style="no-avatar")
         st.session_state.messages.append({"content": answer, "role": False})
         if "대학본부" in prompt:
-            img_path="https://www.groundzeroweb.com/wp-content/uploads/2017/05/Funny-Cat-Memes-11.jpg"
+            img_path="https://github.com/chomok16/gwaj/blob/main/%EB%8C%80%ED%95%99%EB%B3%B8%EB%B6%80.png?raw=true"
             message(
                 f'<img width="100%" height="200" src="{img_path}"/>',
                 allow_html = True,
