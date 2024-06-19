@@ -110,7 +110,26 @@ if prompt := st.chat_input("메시지를 입력하세요."):
             {"name": "", "code": "", "img_url": ""},
             {"name": "", "code": "", "img_url": ""},
             {"name": "", "code": "", "img_url": ""},
+            {"name": "", "code": "", "img_url": ""},
+            {"name": "", "code": "", "img_url": ""},
+            {"name": "", "code": "", "img_url": ""},
+            {"name": "", "code": "", "img_url": ""},
+            {"name": "", "code": "", "img_url": ""},
+            {"name": "", "code": "", "img_url": ""},
+            {"name": "", "code": "", "img_url": ""},
         ]
+        for bld_name in bld_data:
+            if bld_data["name"] in prompt:
+                img_path="https://github.com/chomok16/gwaj/blob/main/maps/%EB%8C%80%ED%95%99%EB%B3%B8%EB%B6%80.png?raw=true"
+                img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
+                message(img_data, avatar_style = 'no-avatar', allow_html = True)
+                st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
+            elif bld_data["name"] not in prompt:
+                if bld_data["code"] in prompt:
+                    img_path=bld_data["img_url"]
+                    img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
+                    message(img_data, avatar_style = 'no-avatar', allow_html = True)
+                    st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
         if "본부" in prompt:
             img_path="https://github.com/chomok16/gwaj/blob/main/maps/%EB%8C%80%ED%95%99%EB%B3%B8%EB%B6%80.png?raw=true"
             img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
