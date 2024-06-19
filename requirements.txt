@@ -1,5 +1,4 @@
 openai
 Pillow
-Json
 streamlit
 streamlit-chat
