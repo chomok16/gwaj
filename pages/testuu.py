@@ -49,34 +49,32 @@ if st.button('Assistant 새롭게 생성하기'):
 
 
 if prompt := st.chat_input("메시지를 입력하세요."):
-    if st.session_state.client not in st.session_state:
-        return
-    st.session_state.messages.append({"role": "user", "content": prompt}) # user의 prompt를 messages로 저장
-    for msg in st.session_state.messages: # re-run 후 대화 내역 출력 및 user의 prompt를 출력
-        message(msg)
-    client = st.session_state.client # session_state에 저장된 client id를 불러오기
-    assistant = st.session_state.assistant
-    thread = client.beta.threads.create(
-        messages=[
-            {
-                "role": "user",
-                "content": prompt,
-            }
-        ]
-    )
-    st.session_state.thread_id = thread.id
-    run = client.beta.threads.runs.create_and_poll(
-        thread_id=thread.id,
-        assistant_id=assistant.id
-    )
-    thread_messages = client.beta.threads.messages.list(thread.id, run_id=run.id)
-    answer = thread_messages.data[0].content[0].text.value # assistant의 응답에서 text를 추출
-    message(answer)
-    st.session_state.messages.append({"role": "assistant", "content": answer})
+    if st.session_state.client in st.session_state:
+        st.session_state.messages.append({"role": "user", "content": prompt}) # user의 prompt를 messages로 저장
+        for msg in st.session_state.messages: # re-run 후 대화 내역 출력 및 user의 prompt를 출력
+            message(msg)
+        client = st.session_state.client # session_state에 저장된 client id를 불러오기
+        assistant = st.session_state.assistant
+        thread = client.beta.threads.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt,
+                }
+            ]
+        )
+        st.session_state.thread_id = thread.id
+        run = client.beta.threads.runs.create_and_poll(
+            thread_id=thread.id,
+            assistant_id=assistant.id
+        )
+        thread_messages = client.beta.threads.messages.list(thread.id, run_id=run.id)
+        answer = thread_messages.data[0].content[0].text.value # assistant의 응답에서 text를 추출
+        message(answer)
+        st.session_state.messages.append({"role": "assistant", "content": answer})
 if st.button("대화 내역 지우기"):
-    if st.session_state.thread_id not in st.session_state:
-        return
-    client = st.session_state.client
-    response = client.beta.thread.delete(st.session_state.thread_id)
-    del st.session_state.messages
-    st.rerun()
+    if st.session_state.thread_id in st.session_state:
+        client = st.session_state.client
+        response = client.beta.thread.delete(st.session_state.thread_id)
+        del st.session_state.messages
+        st.rerun()
