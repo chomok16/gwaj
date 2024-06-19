@@ -1,3 +1,10 @@
+import streamlit as st
+from openai import OpenAI
+from PIL import Image
+from streamlit_chat import message
+import openai
+from streamlit.components.v1 import html
+
 def app():
     st.set_page_config(layout="wide")
     img = Image.open("백경이.png")
