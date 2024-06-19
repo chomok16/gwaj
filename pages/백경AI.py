@@ -81,42 +81,9 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         answer = thread_messages.data[0].content[0].text.value # assistant의 응답에서 text를 추출
         message(answer, avatar_style="no-avatar")
         st.session_state.messages.append({"content": answer, "is_user": False, "html": False})
-        bldg_data = [
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
-            {"name": "", "code": "", "img_url": ""},
+        bldg_data = [                                   # 건물 정보와 이미지 주소 정리
+            {"name": "본부", "code": "A11", "img_url": ""},
+            {"name": "본부", "code": "A11", "code_alt": "a11", "img_url": ""},
         ]
         for bldg_data_component in bldg_data:
             if bldg_data["name"] in prompt:
@@ -126,6 +93,11 @@ if prompt := st.chat_input("메시지를 입력하세요."):
                 st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
             elif bldg_data["name"] not in prompt:
                 if bldg_data["code"] in prompt:
+                    img_path=bldg_data["img_url"]
+                    img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
+                    message(img_data, avatar_style = 'no-avatar', allow_html = True)
+                    st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
+                if bldg_data["code_alt"] in prompt:
                     img_path=bldg_data["img_url"]
                     img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
                     message(img_data, avatar_style = 'no-avatar', allow_html = True)
