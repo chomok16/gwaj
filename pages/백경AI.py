@@ -70,7 +70,7 @@ if prompt := st.chat_input("메시지를 입력하세요."):
                     "role": "user",
                     "content": prompt,
                 }
-            ],
+            ]
         )
         st.session_state.thread_id = thread.id
         run = client.beta.threads.runs.create_and_poll(
