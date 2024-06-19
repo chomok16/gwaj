@@ -30,7 +30,7 @@ if st.button('Assistant 새롭게 생성하기'):
         files = file_streams
     )
     assistant = client.beta.assistants.create(
-        instructions="당신의 이름은 백경AI입니다. 친근한 말투로 대답해주세요. 챗봇으로서 성실하게 대답해주세요.",
+        instructions="당신의 이름은 백경AI입니다. 친근한 말투로 대답해주세요. 챗봇으로서 성실하게 대답해주세요. 존댓말을 사용하지 말고 반말로 대답해주세요.",
         model="gpt-4o",
         tools=[{"type": "file_search"}],
         tool_resources={"file_search":{"vector_store_ids": [vector_store.id]}},
