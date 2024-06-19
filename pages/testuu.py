@@ -66,7 +66,7 @@ if prompt := st.chat_input("메시지를 입력하세요."):
                     "content": prompt,
                 }
             ],
-            response_format={"type": "json_object"},
+            response_format={'type': "json_object"},
         )
         st.session_state.thread_id = thread.id
         run = client.beta.threads.runs.create_and_poll(
