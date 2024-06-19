@@ -31,6 +31,7 @@ if st.button('대화 새로 시작하기'):
         assistant = client.beta.assistants.create(
             instructions="""
             당신의 이름은 '백경이봇'입니다. 존댓말이 아닌 반말로 대답해주세요. 대답은 json형식으로 출력해주세요.
+            key는 text, image 입니다.
             욕설은 사용하지 말아주세요. 챗봇으로서 성실하게 대답해주세요. 업로드된 파일을 바탕으로 대답해주세요.
             '메뉴와가격.pdf'는 교내 식당 '들락날락'의 메뉴판입니다. 메뉴에 관한 정보를 요청받는다면 '들락날락'의 메뉴임을 알려주세요.
             '건물1.pdf'는 교내 시설의 위치를 적어놓은 파일입니다. 숫자로만 이루어진 정보는 시설의 번호입니다.
@@ -43,6 +44,7 @@ if st.button('대화 새로 시작하기'):
             model="gpt-4o",
             tools=[{"type": "file_search"}],
             tool_resources={"file_search":{"vector_store_ids": [vector_store.id]}},
+            respomse_format = {"type": "json_object"},
         )
         if 'client' not in st.session_state: # client를 session_state로 저장
             st.session_state.client = client
