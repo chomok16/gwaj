@@ -79,7 +79,7 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         answer = thread_messages.data[0].content[0].text.value # assistant의 응답에서 text를 추출
         message(answer, avatar_style="no-avatar")
         st.session_state.messages.append({"content": answer, "role": False})
-        if "대학본부" or "A11" in prompt:
+        if "대학본부" in prompt:
             message("https://mblogthumb-phinf.pstatic.net/MjAyMTA5MThfMzcg/MDAxNjMxOTU0MzU4Nzcy.79pDkNzCopTsbkiEwCjJAdpRvuJNOT9TbDoiznk75T8g.PY364zgPEfj0HxZGwsgLtK0e4zAJvDIdLXfG-tUcT9Ag.JPEG.pknunarae/spring%EF%BC%BF2021%EF%BC%BF09%EF%BC%BF09%EF%BC%BF15%EF%BC%BF11%EF%BC%BF22.jpg?type=w800",avatar_style='no-avatar')
 if st.button("대화 내역 지우기"):
     if st.session_state.thread_id:
