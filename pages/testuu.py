@@ -71,7 +71,7 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         run = client.beta.threads.runs.create_and_poll(
             thread_id=thread.id,
             assistant_id=assistant.id,
-            response_format={ "type": "json_object" }
+            response_format={"type": "json_object"}
         )
         thread_messages = client.beta.threads.messages.list(thread.id, run_id=run.id)
         answer = thread_messages.data[0].content[0].text.value # assistant의 응답에서 text를 추출
