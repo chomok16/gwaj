@@ -81,7 +81,7 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         answer = thread_messages.data[0].content[0].text.value # assistant의 응답에서 text를 추출
         message(answer, avatar_style="no-avatar")
         st.session_state.messages.append({"content": answer, "is_user": False, "html": False})
-        bld_data = [
+        bldg_data = [
             {"name": "", "code": "", "img_url": ""},
             {"name": "", "code": "", "img_url": ""},
             {"name": "", "code": "", "img_url": ""},
@@ -118,8 +118,8 @@ if prompt := st.chat_input("메시지를 입력하세요."):
             {"name": "", "code": "", "img_url": ""},
             {"name": "", "code": "", "img_url": ""},
         ]
-        for bld_name in bld_data:
-            if bld_data["name"] in prompt:
+        for bldg_data_component in bldg_data:
+            if bldg_data["name"] in prompt:
                 img_path="https://github.com/chomok16/gwaj/blob/main/maps/%EB%8C%80%ED%95%99%EB%B3%B8%EB%B6%80.png?raw=true"
                 img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
                 message(img_data, avatar_style = 'no-avatar', allow_html = True)
