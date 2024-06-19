@@ -3,6 +3,7 @@ from openai import OpenAI
 from PIL import Image
 from streamlit_chat import message
 import json
+import openai
 
 def app():
     st.set_page_config(layout="wide")
@@ -11,6 +12,7 @@ def app():
     st.image(img)
     st.title("우리 학교의 영원한 친구 백경이")
     st.subheader("백경이는 부경대의 모든 건물들을 다 알아! 학식당 메뉴도 알고 있지, 뭐든지 물어봐!")
+    st.write(openai.__version__)
 app()
 
 with st.sidebar:
