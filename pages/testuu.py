@@ -41,7 +41,7 @@ if st.button('Assistant 새롭게 생성하기'):
             st.session_state.client = client
         if 'assistant' not in st.session_state: # assistant를 session_state로 저장
             st.session_state.assistant = assistant
-        messages_ai = []
+        messages = []
         st.session_state.messages = messages # 대화 내역을 session_state에 저장
         message("안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!")
         st.session_state.messages.append({"content": "안녕, 부경대 친구들! 학교생활을 도와주는 '백경이봇'이야.", "role": "False"})
