@@ -40,7 +40,7 @@ if st.button('대화 새로 시작하기'):
             메시지에 출처에 대한 인용표시와 각주는 출력하지 마세요. 파일을 참고하였다는 사실도 말하지 마세요.
             """,
             model="gpt-4o",
-            response_format={ "type": "json_object" }
+            response_format={ "type": "json_object" },
             tools=[{"type": "file_search"}],
             tool_resources={"file_search":{"vector_store_ids": [vector_store.id]}},
         )
