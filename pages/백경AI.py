@@ -121,6 +121,22 @@ if prompt := st.chat_input("메시지를 입력하세요."):
             img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
             message(img_data, avatar_style = 'no-avatar', allow_html = True)
             st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
+        if "건축관" in prompt:
+            img_path="https://github.com/chomok16/gwaj/blob/main/maps/%EA%B1%B4%EC%B6%95%EA%B4%80.png?raw=true"
+            img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
+            message(img_data, avatar_style = 'no-avatar', allow_html = True)
+            st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
+        if "공학1관" in prompt:
+            img_path="https://github.com/chomok16/gwaj/blob/main/maps/%EA%B3%B5%ED%95%991%EA%B4%80.png?raw=true"
+            img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
+            message(img_data, avatar_style = 'no-avatar', allow_html = True)
+            st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
+        if "공학2관" in prompt:
+            img_path="https://github.com/chomok16/gwaj/blob/main/maps/%EA%B3%B5%ED%95%992%EA%B4%80.png?raw=true"
+            img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
+            message(img_data, avatar_style = 'no-avatar', allow_html = True)
+            st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
+            
 if st.button("대화 내역 지우기"):
     if st.session_state.thread_id:
         if st.session_state.client:
