@@ -82,100 +82,59 @@ if prompt := st.chat_input("메시지를 입력하세요."):
         message(answer, avatar_style="no-avatar")
         st.session_state.messages.append({"content": answer, "is_user": False, "html": False})
         bldg_data = [ # 건물 정보와 이미지 주소 정리 {"name": "건물 이름", "code": "건물 번호", "code_alt": "건물 번호(소문자)", "img_url": "이미지 주소", "width": "", "height": ""},
-            {"name": "본부", "code": "A11", "code_alt": "a11", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%8C%80%ED%95%99%EB%B3%B8%EB%B6%80.png?raw=true", "width": "", "height": ""},
-            {"name": "웅비관", "code": "A12", "code_alt": "a12", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%9B%85%EB%B9%84%EA%B4%80.png?raw=true", "width": "", "height": ""},
-            {"name": "누리관", "code": "A13", "code_alt": "a13", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%88%84%EB%A6%AC%EA%B4%80.png?raw=true", "width": "", "height": ""},
-            {"name": "향파관", "code": "A15", "code_alt": "a15", "img_url": " https://github.com/chomok16/gwaj/blob/main/maps/%ED%96%A5%ED%8C%8C%EA%B4%80.png?raw=true", "width": "", "height": ""},
-            {"name": "미래관", "code": "A21", "code_alt": "a21", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%AF%B8%EB%9E%98%EA%B4%80.png?raw=true", "width": "", "height": ""},
-            {"name": "디자인관", "code": "A22", "code_alt": "a22", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%94%94%EC%9E%90%EC%9D%B8%EA%B4%80.png?raw=true", "width": "", "height": ""},
-            {"name": "나래관", "code": "A23", "code_alt": "a23", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%82%98%EB%9E%98%EA%B4%80.png?raw=true", "width": "", "height": ""},
-            {"name": "창업카페", "code": "A26", "code_alt": "a26", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%B6%80%EC%82%B0%EC%B0%BD%EC%97%85%EC%B9%B4%ED%8E%98.png?raw=true", "width": "", "height": ""},
-            {"name": "창업 카페", "code": "A26", "code_alt": "a26", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%B6%80%EC%82%B0%EC%B0%BD%EC%97%85%EC%B9%B4%ED%8E%98.png?raw=true", "width": "", "height": ""},
-            {"name": "위드센터", "code": "B11", "code_alt": "b11", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%9C%84%EB%93%9C%EC%84%BC%ED%84%B0.png?raw=true", "width": "", "height": ""},
-            {"name": "위드 센터", "code": "B11", "code_alt": "b11", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%9C%84%EB%93%9C%EC%84%BC%ED%84%B0.png?raw=true", "width": "", "height": ""},
-            {"name": "나비센터", "code": "B12", "code_alt": "b12", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%82%98%EB%B9%84%EC%84%BC%ED%84%B0.png?raw=true", "width": "", "height": ""},
-            {"name": "충무관", "code": "B13", "code_alt": "b13", "img_url": "", "width": "", "height": ""},
-            {"name": "환경해양관", "code": "B14", "code_alt": "b14", "img_url": "", "width": "", "height": ""},
-            {"name": "자연과학관 1관", "code": "B15", "code_alt": "b15", "img_url": "", "width": "", "height": ""},
-            {"name": "자연과학1관", "code": "B15", "code_alt": "b15", "img_url": "", "width": "", "height": ""},
-            {"name": "자연과학 1관", "code": "B15", "code_alt": "b15", "img_url": "", "width": "", "height": ""},
-            {"name": "가온관", "code": "B21", "code_alt": "b21", "img_url": "", "width": "", "height": ""},
-            {"name": "청운관", "code": "B22", "code_alt": "b22", "img_url": "", "width": "", "height": ""},
-            {"name": "수산질병 관리원", "code": "C11", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "수산질병관리원", "code": "C11", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "장영실관", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "해양공동연구관", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "어린이집", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "수산과학관", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "건축관", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "호연관", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "자연과학관 2관", "code": "C24", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "자연과학2관", "code": "C24", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "자연과학 2관", "code": "C24", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "인문사회경영관", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "해양수산LMO격리사육동", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "사육동", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""},
-            {"name": "", "code": "", "code_alt": "", "img_url": "", "width": "", "height": ""}
+        {"name": "대학본부", "code": "A11", "code_alt": "a11", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%8C%80%ED%95%99%EB%B3%B8%EB%B6%80.png?raw=true", "width": "599", "height": "288"},
+        {"name": "웅비관", "code": "A12", "code_alt": "a12", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%9B%85%EB%B9%84%EA%B4%80.png?raw=true", "width": "654", "height": "400"},
+        {"name": "누리관", "code": "A13", "code_alt": "a13", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%88%84%EB%A6%AC%EA%B4%80.png?raw=true", "width": "561", "height": "411"},
+        {"name": "향파관", "code": "A15", "code_alt": "a15", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%ED%96%A5%ED%8C%8C%EA%B4%80.png?raw=true", "width": "734", "height": "605"},
+        {"name": "미래관", "code": "A21", "code_alt": "a21", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%AF%B8%EB%9E%98%EA%B4%80.png?raw=true", "width": "431", "height": "248"},
+        {"name": "디자인관", "code": "A22", "code_alt": "a22", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%94%94%EC%9E%90%EC%9D%B8%EA%B4%80.png?raw=true", "width": "409", "height": "342"},
+        {"name": "나래관", "code": "A23", "code_alt": "a23", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%82%98%EB%9E%98%EA%B4%80.png?raw=true", "width": "360", "height": "504"},
+        {"name": "부산창업카페 2호점", "code": "A26", "code_alt": "a26", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%B6%80%EC%82%B0%EC%B0%BD%EC%97%85%EC%B9%B4%ED%8E%98.png?raw=true", "width": "485", "height": "536"},
+        {"name": "위드센터", "code": "B11", "code_alt": "b11", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%9C%84%EB%93%9C%EC%84%BC%ED%84%B0.png?raw=true", "width": "970", "height": "278"},
+        {"name": "나비센터", "code": "B12", "code_alt": "b12", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%82%98%EB%B9%84%EC%84%BC%ED%84%B0.png?raw=true", "width": "449", "height": "558"},
+        {"name": "충무관", "code": "B13", "code_alt": "b13", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%B6%A9%EB%AC%B4%EA%B4%80.png?raw=true", "width": "614", "height": "489"},
+        {"name": "환경해양관", "code": "B14", "code_alt": "b14", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%ED%99%98%EA%B2%BD%ED%95%B4%EC%96%91%EA%B4%80.png?raw=true", "width": "429", "height": "286"},
+        {"name": "자연과학 1관", "code": "B15", "code_alt": "b15", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%9E%90%EC%97%B0%EA%B3%BC%ED%95%991%EA%B4%80.png?raw=true", "width": "667", "height": "362"},
+        {"name": "가온관", "code": "B21", "code_alt": "b21", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EA%B0%80%EC%98%A8%EA%B4%80.png?raw=true", "width": "503", "height": "511"},
+        {"name": "청운관", "code": "B22", "code_alt": "b22", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%B2%AD%EC%9A%B4%EA%B4%80.png?raw=true", "width": "560", "height": "410"},
+        {"name": "수산질병관리원", "code": "C11", "code_alt": "c11", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%88%98%EC%82%B0%EC%A7%88%EB%B3%91%20%EA%B4%80%EB%A6%AC%EC%9B%90.png?raw=true", "width": "471", "height": "535"},
+        {"name": "장영실관", "code": "C12", "code_alt": "c12", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%9E%A5%EC%98%81%EC%8B%A4%EA%B4%80.png?raw=true", "width": "551", "height": "489"},
+        {"name": "해양공동연구관", "code": "C13", "code_alt": "c13", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%ED%95%B4%EC%96%91%EA%B3%B5%EB%8F%99%EC%97%B0%EA%B5%AC%EA%B4%80.png?raw=true", "width": "571", "height": "281"},
+        {"name": "수조실험동", "code": "C27", "code_alt": "c27", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%88%98%EC%A1%B0%EC%8B%A4%ED%97%98%EB%8F%99.png?raw=true", "width": "445", "height": "732"},
+        {"name": "아름관", "code": "C28", "code_alt": "c28", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%95%84%EB%A6%84%EA%B4%80.png?raw=true", "width": "385", "height": "744"},
+        {"name": "테니스장", "code": "D12", "code_alt": "d12", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%ED%85%8C%EB%8B%88%EC%8A%A4%EC%9E%A5.png?raw=true", "width": "651", "height": "387"},
+        {"name": "대운동장", "code": "D13", "code_alt": "d13", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%8C%80%EC%9A%B4%EB%8F%99%EC%9E%A5.png?raw=true", "width": "1080", "height": "506"},
+        {"name": "한울관", "code": "D14", "code_alt": "d14", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%ED%95%9C%EC%9A%B8%EA%B4%80.png?raw=true", "width": "302", "height": "859"},
+        {"name": "창의관", "code": "D15", "code_alt": "d15", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%B0%BD%EC%9D%98%EA%B4%80.png?raw=true", "width": "388", "height": "801"},
+        {"name": "대학극장", "code": "D21", "code_alt": "d21", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%8C%80%ED%95%99%EA%B7%B9%EC%9E%A5.png?raw=true", "width": "840", "height": "422"},
+        {"name": "체육관", "code": "D22", "code_alt": "d22", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%B2%B4%EC%9C%A1%EA%B4%80.png?raw=true", "width": "808", "height": "296"},
+        {"name": "안전관리관", "code": "D23", "code_alt": "d23", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EA%B4%80.png?raw=true", "width": "844", "height": "474"},
+        {"name": "수상레저관", "code": "D24", "code_alt": "d24", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%88%98%EC%83%81%EB%A0%88%EC%A0%80%EA%B4%80.png?raw=true", "width": "829", "height": "405"},
+        {"name": "세종 1관", "code": "E11", "code_alt": "e11", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%84%B8%EC%A2%851%EA%B4%80.png?raw=true", "width": "503", "height": "367"},
+        {"name": "세종 2관", "code": "E12", "code_alt": "e12", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%84%B8%EC%A2%852%EA%B4%80.png?raw=true", "width": "286", "height": "356"},
+        {"name": "공학 1관", "code": "E13", "code_alt": "e13", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EA%B3%B5%ED%95%991%EA%B4%80.png?raw=true", "width": "440", "height": "346"},
+        {"name": "학술정보관", "code": "E14", "code_alt": "e14", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%ED%95%99%EC%88%A0%EC%A0%95%EB%B3%B4%EA%B4%80(%EC%A4%91%EC%95%99%EB%8F%84%EC%84%9C%EA%B4%80).png?raw=true", "width": "638", "height": "477"},
+        {"name": "공학 2관", "code": "E21", "code_alt": "e21", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EA%B3%B5%ED%95%992%EA%B4%80.png?raw=true", "width": "402", "height": "334"},
+        {"name": "동원 장보고관", "code": "E22", "code_alt": "e22", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EB%8F%99%EC%9B%90%20%EC%9E%A5%EB%B3%B4%EA%B3%A0%EA%B4%80.png?raw=true", "width": "555", "height": "319"},
+        {"name": "양어장 관리사", "code": "E29", "code_alt": "e29", "img_url": "https://github.com/chomok16/gwaj/blob/main/maps/%EC%96%91%EC%96%B4%EC%9E%A5%EA%B4%80%EB%A6%AC%EC%82%AC.png?raw=true", "width": "497", "height": "291"}
         ]
         for bldg_data_component in bldg_data:
             if bldg_data["name"] in prompt:
                 img_path=bldg
-                img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
+                img_data=f'<img width={bldg_data["width"]} height={bldg_data["height"]} src="{img_path}"/>'
                 message(img_data, avatar_style = 'no-avatar', allow_html = True)
                 st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
             elif bldg_data["name"] not in prompt:
                 if bldg_data["code"] in prompt:
                     img_path=bldg_data["img_url"]
-                    img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
+                    img_data=f'<img width={bldg_data["width"]} height={bldg_data["height"]} src="{img_path}"/>'
                     message(img_data, avatar_style = 'no-avatar', allow_html = True)
                     st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
                 if bldg_data["code_alt"] in prompt:
                     img_path=bldg_data["img_url"]
-                    img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
+                    img_data=f'<img width={bldg_data["width"]} height={bldg_data["height"]} src="{img_path}"/>'
                     message(img_data, avatar_style = 'no-avatar', allow_html = True)
                     st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
-        if "본부" in prompt:
-            img_path="https://github.com/chomok16/gwaj/blob/main/maps/%EB%8C%80%ED%95%99%EB%B3%B8%EB%B6%80.png?raw=true"
-            img_data=f'<img width="100%" height="200" src="{img_path}"/>'
-            message(img_data, avatar_style = 'no-avatar', allow_html = True)
-            st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
-        if "가온관" in prompt:
-            img_path="https://github.com/chomok16/gwaj/blob/main/maps/%EA%B0%80%EC%98%A8%EA%B4%80.png?raw=true"
-            img_data=f'<img width="100%" height="200" src="{img_path}"/>'
-            message(img_data, avatar_style = 'no-avatar', allow_html = True)
-            st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
-        if "건축관" in prompt:
-            img_path="https://github.com/chomok16/gwaj/blob/main/maps/%EA%B1%B4%EC%B6%95%EA%B4%80.png?raw=true"
-            img_data=f'<img width="100%" height="200" src="{img_path}"/>'
-            message(img_data, avatar_style = 'no-avatar', allow_html = True)
-            st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
-        if "공학1관" in prompt:
-            img_path="https://github.com/chomok16/gwaj/blob/main/maps/%EA%B3%B5%ED%95%991%EA%B4%80.png?raw=true"
-            img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
-            message(img_data, avatar_style = 'no-avatar', allow_html = True)
-            st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
-        if "공학2관" in prompt:
-            img_path="https://github.com/chomok16/gwaj/blob/main/maps/%EA%B3%B5%ED%95%992%EA%B4%80.png?raw=true"
-            img_data=f'<img width="100%" height="100%" src="{img_path}"/>'
-            message(img_data, avatar_style = 'no-avatar', allow_html = True)
-            st.session_state.messages.append({"content": img_data, "is_user": False, "html": True})
             
 if st.button("대화 내역 지우기"):
     if st.session_state.thread_id:
