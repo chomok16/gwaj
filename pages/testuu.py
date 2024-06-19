@@ -13,9 +13,9 @@ def app():
 app()
 
 with st.sidebar:
-    user_api_key = st.text_input("OpenAI API키를 입력해주세요.", key = "openai_api_key", type="password")
-    if 'user_api_key' not in st.session_state:
-        st.session_state.key = user_api_key
+    if user_api_key := st.text_input("OpenAI API키를 입력해주세요.", key = "openai_api_key", type="password"):
+        if 'user_api_key' not in st.session_state:
+            st.session_state.key = user_api_key
     
 if st.button('Assistant 새롭게 생성하기'):
     if st.session_state.key in st.session_state:
