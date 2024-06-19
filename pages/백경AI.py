@@ -59,7 +59,7 @@ if st.button('대화 새로 시작하기'):
 
 if prompt := st.chat_input("메시지를 입력하세요."):
     if st.session_state.client:
-        st.session_state.messages.append({"content": prompt, "role": True}) # user의 prompt를 messages로 저장
+        st.session_state.messages.append({"content": prompt, "is_user": True}) # user의 prompt를 messages로 저장
         for msg in st.session_state.messages: # re-run 후 대화 내역 출력 및 user의 prompt를 출력
             message(msg["content"], is_user=msg["is_user"], avatar_style="no-avatar", allow_html=msg["html"])
         client = st.session_state.client # session_state에 저장된 client id를 불러오기
