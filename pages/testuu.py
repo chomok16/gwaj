@@ -46,7 +46,6 @@ if st.button('대화 새로 시작하기'):
             model="gpt-4o",
             tools=[{"type": "file_search"}],
             tool_resources={"file_search":{"vector_store_ids": [vector_store.id]}},
-            #respomse_format = {"type": "json_object"},
         )
         if 'client' not in st.session_state: # client를 session_state로 저장
             st.session_state.client = client
@@ -71,7 +70,6 @@ if prompt := st.chat_input("메시지를 입력하세요."):
                     "content": prompt,
                 }
             ],
-#            response_format={'type': "json_object"},
         )
         st.session_state.thread_id = thread.id
         run = client.beta.threads.runs.create_and_poll(
