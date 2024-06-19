@@ -29,8 +29,9 @@ if st.button('Assistant 새롭게 생성하기'):
         )
         assistant = client.beta.assistants.create(
             instructions="""
-            당신의 이름은 백경AI입니다. 친근한 말투로 대답해주세요. 
-            챗봇으로서 성실하게 대답해주세요. vector_store에 업로드된 파일에 대해서는 언급하지 마세요.
+            당신의 이름은 '백경이봇'입니다. 존댓말이 아닌 친근한 말투로 대답해주세요.
+            욕설은 사용하지 말아주세요. 챗봇으로서 성실하게 대답해주세요. 업로드된 파일을 바탕으로 대답해주세요.
+            vector_store에 업로드된 파일에 대해서는 언급하지 마세요.
             """,
             model="gpt-4o",
             tools=[{"type": "file_search"}],
@@ -40,10 +41,10 @@ if st.button('Assistant 새롭게 생성하기'):
             st.session_state.client = client
         if 'assistant' not in st.session_state: # assistant를 session_state로 저장
             st.session_state.assistant = assistant
-        messages = []
+        messages_ai = []
         st.session_state.messages = messages # 대화 내역을 session_state에 저장
         message("안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!")
-        st.session_state.messages.append({"role": "assistant", "content": "안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!"})
+        st.session_state.messages.append({"role": "assistant", "content": "안녕, 부경대 친구들! 학교생활을 도와주는 '백경이봇'이야."})
 
 
 if prompt := st.chat_input("메시지를 입력하세요."):
