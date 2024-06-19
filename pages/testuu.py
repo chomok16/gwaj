@@ -42,9 +42,12 @@ with st.sidebar:
                 st.session_state.assistant = assistant
             messages = []
             st.session_state.messages = messages # 대화 내역을 session_state에 저장
-            message("안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!", is_user=False)
-            st.session_state.messages.append({"content": "안녕, 부경대 친구들! 학교생활을 도와주는 '백경이봇'이야.", "role": False})
 
+if st.session_state.client:
+    msgtest={"content": "안녕, 부경대 친구들! 학교생활을 도와주는 '백경이봇'이야.", "role": False}
+    if msgtest in st.session_state.messages:
+        message("안녕, 부경대 친구들, 학교생활을 도와주는 백경이야!", is_user=False)
+        st.session_state.messages.append({"content": "안녕, 부경대 친구들! 학교생활을 도와주는 '백경이봇'이야.", "role": False})
 
 if prompt := st.chat_input("메시지를 입력하세요."):
     if st.session_state.client:
