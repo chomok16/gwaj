@@ -45,10 +45,10 @@ if st.button('Assistant 새롭게 생성하기'):
 
 
 if prompt := st.chat_input("메시지를 입력하세요."):
-    if st.session_state.client in st.session_state:
+    if st.session_state.client:
         st.session_state.messages.append({"role": "user", "content": prompt}) # user의 prompt를 messages로 저장
         for msg in st.session_state.messages: # re-run 후 대화 내역 출력 및 user의 prompt를 출력
-            message(msg)
+            message(msg, is_user=True)
         client = st.session_state.client # session_state에 저장된 client id를 불러오기
         assistant = st.session_state.assistant
         thread = client.beta.threads.create(
