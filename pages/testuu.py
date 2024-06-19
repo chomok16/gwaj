@@ -29,7 +29,7 @@ if st.button('Assistant 새롭게 생성하기'):
         )
         assistant = client.beta.assistants.create(
             instructions="""
-            당신의 이름은 '백경이봇'입니다. 존댓말이 아닌 친근한 말투로 대답해주세요.
+            당신의 이름은 '백경이봇'입니다. 존댓말이 아닌 반말로 대답해주세요.
             욕설은 사용하지 말아주세요. 챗봇으로서 성실하게 대답해주세요. 업로드된 파일을 바탕으로 대답해주세요.
             vector_store에 업로드된 파일에 대해서는 언급하지 마세요.
             """,
